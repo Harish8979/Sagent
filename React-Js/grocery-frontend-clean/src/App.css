@@ -1,0 +1,225 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e8f5e9 100%);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Global Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Header Styles */
+.header {
+  background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+  color: white;
+  padding: 20px 30px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  box-shadow: 0 4px 20px rgba(46, 125, 50, 0.3);
+  animation: slideIn 0.5s ease-out;
+}
+
+/* Product Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+  padding: 25px;
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Product Card */
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 15px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #66bb6a, #43a047);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 32px rgba(46, 125, 50, 0.2);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card h4 {
+  margin: 10px 0 5px;
+  color: #1b5e20;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.card p {
+  color: #666;
+  font-size: 13px;
+  margin: 5px 0;
+  line-height: 1.4;
+}
+
+/* Price */
+.price {
+  color: #2e7d32;
+  font-weight: bold;
+  font-size: 18px;
+  margin: 10px 0;
+  display: block;
+}
+
+/* Buttons */
+.add-btn {
+  background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  color: white;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(67, 160, 71, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.add-btn:hover {
+  background: linear-gradient(135deg, #43a047 0%, #2e7d32 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(67, 160, 71, 0.4);
+}
+
+.add-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(67, 160, 71, 0.3);
+}
+
+/* Input Fields */
+input, select, textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+  background: white;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: #66bb6a;
+  box-shadow: 0 0 0 3px rgba(102, 187, 106, 0.1);
+}
+
+/* Loading Spinner */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  font-size: 18px;
+  color: #43a047;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Error Message */
+.error {
+  background: #ffebee;
+  color: #c62828;
+  padding: 12px 20px;
+  border-radius: 12px;
+  margin: 15px 0;
+  border-left: 4px solid #c62828;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Success Message */
+.success {
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 12px 20px;
+  border-radius: 12px;
+  margin: 15px 0;
+  border-left: 4px solid #2e7d32;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px;
+    padding: 15px;
+  }
+  
+  .header {
+    padding: 15px 20px;
+  }
+  
+  .container {
+    padding: 15px;
+  }
+}
