@@ -1,0 +1,18 @@
+.borrow-history {
+  padding: 20px 0;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.filter-group label {
+  margin: 0;
+  font-weight: 600;
+}
+
+.filter-select {
+  width: 200px;
+}
